@@ -16,31 +16,46 @@ public class CalculatorGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 300);
 		frame.setLayout(new GridLayout(6, 2)); // Grid layout for arranging components
-		frame.setLocationRelativeTo(null); // null means center of window
+		frame.setLocationRelativeTo(null); // null causesthe window to center on screen
+		
+		Font defaultFont = new Font("Arial", Font.PLAIN, 18);
+		Font boldFont = new Font("Arial", Font.BOLD, 16);
 		
 		// Create input fields and labels
 		JLabel label1 = new JLabel("Number 1:");
 		JTextField numberField1 = new JTextField();
+		label1.setFont(boldFont);
+		numberField1.setFont(defaultFont);
+
 		JLabel label2 = new JLabel("Number 2:");
 		JTextField numberField2 = new JTextField();
+		label2.setFont(boldFont);
+		numberField2.setFont(defaultFont);
+
+		// Create a dropdown for arithmetic operations
+		JLabel operationLabel = new JLabel("Select Operation:");
+		String[] operations = { "+", "-", "*", "/", "^" };
+		JComboBox<String> operationComboBox = new JComboBox<>(operations);
+		operationLabel.setFont(boldFont);
+		operationComboBox.setFont(defaultFont);
 
 		// Create a dropdown for format options
 		JLabel formatterLabel = new JLabel("Select Format:");
 		String[] formatOptions = { "decimal", "dollar", "euro", "scientific" };
 		JComboBox<String> formatterComboBox = new JComboBox<>(formatOptions);
-		
-		// Create a dropdown for arithmetic operations
-		JLabel operationLabel = new JLabel("Select Operation:");
-		String[] operations = { "+", "-", "*", "/", "^" };
-		JComboBox<String> operationComboBox = new JComboBox<>(operations);
+		formatterLabel.setFont(boldFont);
+		formatterComboBox.setFont(defaultFont);
 
 		// Create a button to perform the calculation
 		JButton calculateButton = new JButton("Calculate");
+		calculateButton.setFont(defaultFont);
 
 		// Create a label to display the result
 		JLabel resultLabel = new JLabel("Result: ");
 		JTextField resultField = new JTextField();
 		resultField.setEditable(false); // Make the result field non-editable
+		resultLabel.setFont(boldFont);
+		resultField.setFont(defaultFont);
 
 		// Add components to the frame
 		frame.add(label1);
@@ -62,8 +77,9 @@ public class CalculatorGUI {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Parse the input numbers
-					double num1 = Double.parseDouble(numberField1.getText());
-					double num2 = Double.parseDouble(numberField2.getText());
+					// replace commas with decimal points for parsing
+					double num1 = Double.parseDouble(numberField1.getText().replace(",", "."));
+					double num2 = Double.parseDouble(numberField2.getText().replace(",", "."));
 
 					// Get the selected formatter type from the dropdown
 					String selectedFormat = (String) formatterComboBox.getSelectedItem();
