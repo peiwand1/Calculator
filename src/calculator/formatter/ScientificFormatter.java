@@ -4,6 +4,6 @@ package calculator.formatter;
 public class ScientificFormatter implements Formatter {
 	@Override
 	public String format(double number) {
-		return String.format("%,.8E", number);
+		return String.format("%.8e", number);
 	}
 }
