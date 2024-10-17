@@ -7,3 +7,6 @@ Example output formats:
 - $ 1,234.57
 - € 1.234,57
 - 1,23456789 E3
+
+A simple swing GUI is provided:  
+![GUI example](ex1.png)
