@@ -2,7 +2,6 @@ package calculator;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO read from config instead of direct declaration
         String formatterType = "scientific";  // options: "decimal", "dollar", "euro", "scientific"
 
         // Make a calculator by sending config to a factory
