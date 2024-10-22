@@ -1,7 +1,9 @@
 package calculator.formatter;
 
+import calculator.factory.DependencyInjectable;
+
 //Formatter for euro notation: € 1.234,57
-public class EuroFormatter implements Formatter {
+public class EuroFormatter implements Formatter, DependencyInjectable {
 	@Override
 	public String format(double number) {
 		// swap . and ,

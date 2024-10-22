@@ -3,7 +3,7 @@ package calculator.gui;
 import javax.swing.*;
 
 import calculator.Calculator;
-import calculator.CalculatorFactory;
+import calculator.factory.CalculatorFactory;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,10 +17,10 @@ public class CalculatorGUI {
 		frame.setSize(400, 300);
 		frame.setLayout(new GridLayout(6, 2)); // Grid layout for arranging components
 		frame.setLocationRelativeTo(null); // null causesthe window to center on screen
-		
+
 		Font defaultFont = new Font("Arial", Font.PLAIN, 18);
 		Font boldFont = new Font("Arial", Font.BOLD, 16);
-		
+
 		// Create input fields and labels
 		JLabel label1 = new JLabel("Number 1:");
 		JTextField numberField1 = new JTextField();
@@ -41,7 +41,7 @@ public class CalculatorGUI {
 
 		// Create a dropdown for format options
 		JLabel formatterLabel = new JLabel("Select Format:");
-		String[] formatOptions = { "decimal", "dollar", "euro", "scientific" };
+		String[] formatOptions = { "DecimalFormatter", "DollarFormatter", "EuroFormatter", "ScientificFormatter" };
 		JComboBox<String> formatterComboBox = new JComboBox<>(formatOptions);
 		formatterLabel.setFont(boldFont);
 		formatterComboBox.setFont(defaultFont);
@@ -77,15 +77,17 @@ public class CalculatorGUI {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Parse the input numbers
-					// replace commas with decimal points for parsing
+					// replace user input commas with decimal points for parsing
 					double num1 = Double.parseDouble(numberField1.getText().replace(",", "."));
 					double num2 = Double.parseDouble(numberField2.getText().replace(",", "."));
 
 					// Get the selected formatter type from the dropdown
 					String selectedFormat = (String) formatterComboBox.getSelectedItem();
+					selectedFormat = "calculator.formatter." + selectedFormat;
 
 					// Create the calculator with the chosen formatter using the factory
-					Calculator calculator = CalculatorFactory.createCalculator(selectedFormat);
+					CalculatorFactory factory = new CalculatorFactory(selectedFormat);
+					Calculator calculator = factory.createCalculator();
 
 					String selectedOperation = (String) operationComboBox.getSelectedItem();
 
