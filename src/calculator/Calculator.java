@@ -1,9 +1,11 @@
 package calculator;
 
+import calculator.factory.DependencyInjectable;
 import calculator.formatter.Formatter;
 import java.lang.Math;
 
-public class Calculator {
+// TODO check if this needs the interface
+public class Calculator implements DependencyInjectable {
 	private Formatter formatter;
 
 	// constructor
@@ -26,10 +28,10 @@ public class Calculator {
 	public double multiply(double a, double b) {
 		return a * b;
 	}
-	
+
 	public double power(double a, double b) {
-        return Math.pow(a, b);
-    }
+		return Math.pow(a, b);
+	}
 
 	// return result based on formatter
 	public String getFormattedResult(double result) {
