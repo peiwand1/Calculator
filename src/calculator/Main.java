@@ -6,7 +6,7 @@ import calculator.factory.CalculatorFactory;
 public class Main {
 	public static void main(String[] args) {
 		// Load the formatter class name from the configuration file
-		String formatterClassName = ConfigLoader.loadFormatterClassName();
+		String formatterClassName = ConfigLoader.loadFormatterClassName("config.json");
 
 		CalculatorFactory factory = new CalculatorFactory(formatterClassName);
 		Calculator calculator = factory.createCalculator();

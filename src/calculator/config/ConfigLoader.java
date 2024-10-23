@@ -5,11 +5,11 @@ import java.io.File;
 
 public class ConfigLoader {
 
-    public static String loadFormatterClassName() {
+    public static String loadFormatterClassName(String fileName) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Read the JSON configuration file
-            Config config = mapper.readValue(new File("src/config.json"), Config.class);
+            Config config = mapper.readValue(new File(fileName), Config.class);
             return config.getFormatter();
         } catch (Exception e) {
             throw new RuntimeException("Error reading config file", e);
