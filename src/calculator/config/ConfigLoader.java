@@ -18,6 +18,6 @@ public class ConfigLoader {
 	}
 
 	public static String getFormatterClassName() {
-		return config.get("formatter").asText();
+		return config.get("Formatter").asText();
 	}
 }
