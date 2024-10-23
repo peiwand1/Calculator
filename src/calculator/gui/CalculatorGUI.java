@@ -19,7 +19,7 @@ public class CalculatorGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(360, 240);
 		frame.setLayout(new GridLayout(5, 2)); // Grid layout for arranging components
-		frame.setLocationRelativeTo(null); // null causesthe window to center on screen
+		frame.setLocationRelativeTo(null); // null causes the window to center on screen
 
 		Font defaultFont = new Font("Arial", Font.PLAIN, 18);
 		Font boldFont = new Font("Arial", Font.BOLD, 16);
