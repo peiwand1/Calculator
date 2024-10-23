@@ -42,12 +42,12 @@ public class CalculatorGUI {
 		operationLabel.setFont(boldFont);
 		operationComboBox.setFont(defaultFont);
 
-		// Create a dropdown for format options
-		JLabel formatterLabel = new JLabel("Select Format:");
-		String[] formatOptions = { "DecimalFormatter", "DollarFormatter", "EuroFormatter", "ScientificFormatter" };
-		JComboBox<String> formatterComboBox = new JComboBox<>(formatOptions);
-		formatterLabel.setFont(boldFont);
-		formatterComboBox.setFont(defaultFont);
+//		// Create a dropdown for format options
+//		JLabel formatterLabel = new JLabel("Select Format:");
+//		String[] formatOptions = { "DecimalFormatter", "DollarFormatter", "EuroFormatter", "ScientificFormatter" };
+//		JComboBox<String> formatterComboBox = new JComboBox<>(formatOptions);
+//		formatterLabel.setFont(boldFont);
+//		formatterComboBox.setFont(defaultFont);
 
 		// Create a button to perform the calculation
 		JButton calculateButton = new JButton("Calculate");
@@ -84,9 +84,9 @@ public class CalculatorGUI {
 					double num1 = Double.parseDouble(numberField1.getText().replace(",", "."));
 					double num2 = Double.parseDouble(numberField2.getText().replace(",", "."));
 
-					// Get the selected formatter type from the dropdown
-					String selectedFormat = (String) formatterComboBox.getSelectedItem();
-					selectedFormat = "calculator.formatter." + selectedFormat;
+//					// Get the selected formatter type from the dropdown
+//					String selectedFormat = (String) formatterComboBox.getSelectedItem();
+//					selectedFormat = "calculator.formatter." + selectedFormat;
 
 					// Create the calculator with the chosen formatter using the factory
 					FormatterFactory factory = new FormatterFactory();
