@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class CalculatorGUI {
 	public static void main(String[] args) {
-		ConfigLoader.setFileName("config.json");
+		ConfigLoader.loadConfig("config.json");
 
 		// Create the frame (window)
 		JFrame frame = new JFrame("Simple Calculator");

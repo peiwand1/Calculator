@@ -8,7 +8,7 @@ public class FormatterFactory extends GenericFactory {
 
 	public FormatterFactory() {
 		// Load the formatter class name from the configuration file
-		this.formatterClassName = ConfigLoader.loadFormatterClassName();
+		this.formatterClassName = ConfigLoader.getFormatterClassName();
 	}
 
 	public Formatter createFormatter() {

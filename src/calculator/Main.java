@@ -5,7 +5,7 @@ import calculator.factory.FormatterFactory;
 
 public class Main {
 	public static void main(String[] args) {
-		ConfigLoader.setFileName("config.json");
+		ConfigLoader.loadConfig("config.json");
 
 		FormatterFactory factory = new FormatterFactory();
 		Calculator calculator = new Calculator(factory.createFormatter());
