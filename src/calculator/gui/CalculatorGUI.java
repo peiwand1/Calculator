@@ -3,7 +3,8 @@ package calculator.gui;
 import javax.swing.*;
 
 import calculator.Calculator;
-import calculator.factory.CalculatorFactory;
+import calculator.config.ConfigLoader;
+import calculator.factory.FormatterFactory;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,11 +12,13 @@ import java.awt.event.ActionListener;
 
 public class CalculatorGUI {
 	public static void main(String[] args) {
+		ConfigLoader.setFileName("config.json");
+
 		// Create the frame (window)
 		JFrame frame = new JFrame("Simple Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400, 300);
-		frame.setLayout(new GridLayout(6, 2)); // Grid layout for arranging components
+		frame.setSize(360, 240);
+		frame.setLayout(new GridLayout(5, 2)); // Grid layout for arranging components
 		frame.setLocationRelativeTo(null); // null causesthe window to center on screen
 
 		Font defaultFont = new Font("Arial", Font.PLAIN, 18);
@@ -64,8 +67,8 @@ public class CalculatorGUI {
 		frame.add(operationComboBox);
 		frame.add(label2);
 		frame.add(numberField2);
-		frame.add(formatterLabel);
-		frame.add(formatterComboBox);
+//		frame.add(formatterLabel);
+//		frame.add(formatterComboBox);
 		frame.add(new JLabel()); // Empty label for spacing
 		frame.add(calculateButton);
 		frame.add(resultLabel);
@@ -86,8 +89,8 @@ public class CalculatorGUI {
 					selectedFormat = "calculator.formatter." + selectedFormat;
 
 					// Create the calculator with the chosen formatter using the factory
-					CalculatorFactory factory = new CalculatorFactory(selectedFormat);
-					Calculator calculator = factory.createCalculator();
+					FormatterFactory factory = new FormatterFactory();
+					Calculator calculator = new Calculator(factory.createFormatter());
 
 					String selectedOperation = (String) operationComboBox.getSelectedItem();
 
