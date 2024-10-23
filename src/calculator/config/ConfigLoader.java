@@ -1,35 +1,23 @@
 package calculator.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.File;
 
 public class ConfigLoader {
-	private static Config config;
+	private static JsonNode config;
 
 	public static void loadConfig(String fileName) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			// Read the JSON configuration file
-			config = mapper.readValue(new File(fileName), Config.class);
+			// Read the JSON configuration file into a tree
+			config = mapper.readTree(new File(fileName));
 		} catch (Exception e) {
 			throw new RuntimeException("Error reading config file", e);
 		}
 	}
 
 	public static String getFormatterClassName() {
-		return config.getFormatter();
-	}
-
-	// Configuration class to map the JSON structure
-	public static class Config {
-		private String formatter = ""; //default value
-
-		public String getFormatter() {
-			return formatter;
-		}
-
-		public void setFormatter(String formatter) {
-			this.formatter = formatter;
-		}
+		return config.get("formatter").asText();
 	}
 }
